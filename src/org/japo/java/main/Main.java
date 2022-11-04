@@ -17,41 +17,61 @@
  */
 package org.japo.java.main;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
+
+    // Instancia el objeto Scanner
+    public static final Scanner SCN
+            = new Scanner(System.in, "Windows-1252")
+                    .useLocale(Locale.ENGLISH).useDelimiter("\\s+");
 
     public static void main(String[] args) {
         // Referencias
         final String COMIDA1 = "carne";
         final String COMIDA2 = "pescado";
+//        final String COMIDA3 = "arroz";
         final int PUAS0 = 0;
         final int PUAS1 = 3;
         final int PUAS2 = 4;
-        
+
         // Variables
         int puas;
 
-        // Instancia un objeto Scanner
-        Scanner sc = new Scanner(System.in, "ISO-8859-1");
+        // Cabecera
+        System.out.println("Alternativa Tenedor");
+        System.out.println("===================");
 
-        // Introduce el tippo de comida
+        // Introduce el tipo de comida
         System.out.print("Tipo de comida .: ");
-        String tipoComida = sc.nextLine();
+        String tipoComida = SCN.nextLine().toLowerCase();
 
         // Analiza el tipo de comida
-        switch (tipoComida) {
-            case COMIDA1:
-                puas = PUAS1;
-                break;
-            case COMIDA2:
-                puas = PUAS2;
-                break;
-            default:
-                puas = PUAS0;
+//        switch (tipoComida) {
+//            case COMIDA1:
+//                puas = PUAS1;
+//                break;
+//            case COMIDA2:
+////            case COMIDA3:
+//                puas = PUAS2;
+//                break;
+//            default:
+//                puas = PUAS0;
+//        }
+        
+        if (tipoComida.equals(COMIDA1)) {
+            puas = PUAS1;
+        } else if (tipoComida.equals(COMIDA2)) {
+            puas = PUAS2;
+        } else {
+            puas = PUAS0;
         }
+        
+        // Separador
+        System.out.println("---");
 
         // Muestra el resultado
-        System.out.printf("Tenedor con ....: %d púas\n", puas);
+        System.out.printf("Tenedor con ....: %d púas%n", puas);
     }
 }
